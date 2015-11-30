@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<sdf version='1.5'>
+  <world name="default">
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name='simpleSquare'>
+      <plugin name='icecore' filename='libgazebo_icecore_model.so'>
+        <iceConfigFile>example.cfg</iceConfigFile>
+        <iceConfigPrefix>Example</iceConfigPrefix>
+      </plugin>
+      <plugin name='pose3d2ice' filename='libgazebo_pose3d2ice.so'/>
+      <pose>0 0 0.5 0 -0 0</pose>
+      <link name='unit_box_0'>
+        <pose>0 0 0 0 -0 0</pose>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <visual name='unit_box_0_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='unit_box_0_collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <pose>0 0 0 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+    </model>
+  </world>
+</sdf>
